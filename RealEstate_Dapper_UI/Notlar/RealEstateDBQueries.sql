@@ -55,3 +55,20 @@ PhoneNumber nvarchar(100),
 ImageUrl nvarchar(100),
 Status  bit
 )
+
+
+create Table WhoWeAreDetail
+(
+WhoWeAreDetailID int identity(1,1) primary key,
+Title Nvarchar(100),
+Subtitle Nvarchar(100),
+Description1 Nvarchar(500),
+Description2 Nvarchar(500),
+)
+
+create Table Services
+(
+ServiceID int identity(1,1) primary key,
+Name Nvarchar(100),
+Status bit
+)
