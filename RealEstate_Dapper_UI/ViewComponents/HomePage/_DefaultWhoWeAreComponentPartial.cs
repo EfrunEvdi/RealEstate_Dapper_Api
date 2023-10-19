@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using RealEstate_Dapper_UI.Dtos.WhoWeAreDtos;
 
 namespace RealEstate_Dapper_UI.ViewComponents.HomePage
 {
@@ -11,8 +13,21 @@ namespace RealEstate_Dapper_UI.ViewComponents.HomePage
             _httpClientFactory = httpClientFactory;
         }
 
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:44333/api/WhoWeAreDetail");
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var value = JsonConvert.DeserializeObject<List<ResultWhoWeAreDto>>(jsonData);
+                ViewBag.title = value.Select(x => x.Title).FirstOrDefault();
+                ViewBag.subTitle = value.Select(x => x.SubTitle).FirstOrDefault();
+                ViewBag.description1 = value.Select(x => x.Description1).FirstOrDefault();
+                ViewBag.description2 = value.Select(x => x.Description2).FirstOrDefault();
+            }
+
             return View();
         }
     }
