@@ -72,3 +72,11 @@ ServiceID int identity(1,1) primary key,
 Name Nvarchar(100),
 Status bit
 )
+
+Create table BottomGrid
+(
+BottomGridID int identity(1,1) primary key,
+Icon nvarchar(100),
+Title nvarchar(100),
+Description nvarchar(250),
+)

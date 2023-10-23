@@ -15,7 +15,7 @@ namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
 
         public async void CreateCategory(CreateCategoryDto categoryDto)
         {
-            string query = "Insert Into Category (Name,Status) Values (@name,@status)";
+            string query = "Insert Into Categories (Name,Status) Values (@name,@status)";
             var parameters = new DynamicParameters();
             parameters.Add("@name", categoryDto.Name);
             parameters.Add("@status", true);
@@ -28,7 +28,7 @@ namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
 
         public async void DeleteCategory(int id)
         {
-            string query = "Delete From Category Where CategoryID=@categoryID";
+            string query = "Delete From Categories Where CategoryID=@categoryID";
             var parameters = new DynamicParameters();
             parameters.Add("@categoryID", id);
 
@@ -40,7 +40,7 @@ namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
 
         public async Task<List<ResultCategoryDto>> GetAllCategoryAsync()
         {
-            string query = "Select * From Category";
+            string query = "Select * From Categories";
 
             using (var connection = _context.CreateConnection())
             {
@@ -51,7 +51,7 @@ namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
 
         public async Task<GetByIDCategoryDto> GetCategory(int id)
         {
-            string query = "Select * From Category Where CategoryID=@categoryID";
+            string query = "Select * From Categories Where CategoryID=@categoryID";
             var parameters = new DynamicParameters();
             parameters.Add("@categoryID", id);
             using (var connection = _context.CreateConnection())
@@ -63,7 +63,7 @@ namespace RealEstate_Dapper_Api.Repositories.CategoryRepository
 
         public async void UpdateCategory(UpdateCategoryDto categoryDto)
         {
-            string query = "Update Category Set Name=@name,Status=@status Where CategoryID=@categoryID";
+            string query = "Update Categories Set Name=@name,Status=@status Where CategoryID=@categoryID";
             var parameters = new DynamicParameters();
             parameters.Add("@name", categoryDto.Name);
             parameters.Add("@status", categoryDto.Status);

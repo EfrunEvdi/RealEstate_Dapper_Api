@@ -16,7 +16,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
 
         public async Task<List<ResultProductDto>> GetAllProductAsync()
         {
-            string query = "Select * From Product";
+            string query = "Select * From Products";
 
             using (var connection = _context.CreateConnection())
             {
@@ -27,7 +27,7 @@ namespace RealEstate_Dapper_Api.Repositories.ProductRepository
 
         public async Task<List<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync()
         {
-            string query = "Select ProductID,Title,Price,City,District,Name,CoverImage,Type,Address From Product Inner Join Category On Product.ProductCategory=Category.CategoryID";
+            string query = "Select ProductID,Title,Price,City,District,Name,CoverImage,Type,Address From Products Inner Join Categories On Products.ProductCategory=Categories.CategoryID";
 
             using (var connection = _context.CreateConnection())
             {

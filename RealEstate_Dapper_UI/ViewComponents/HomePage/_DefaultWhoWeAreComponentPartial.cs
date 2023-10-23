@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using RealEstate_Dapper_UI.Dtos.ServiceDtos;
 using RealEstate_Dapper_UI.Dtos.WhoWeAreDtos;
 
 namespace RealEstate_Dapper_UI.ViewComponents.HomePage
@@ -18,14 +19,23 @@ namespace RealEstate_Dapper_UI.ViewComponents.HomePage
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44333/api/WhoWeAreDetail");
 
-            if (responseMessage.IsSuccessStatusCode)
+            var client2 = _httpClientFactory.CreateClient();
+            var responseMessage2 = await client2.GetAsync("https://localhost:44333/api/Services"); // Solidi ezdik :D
+
+            if (responseMessage.IsSuccessStatusCode && responseMessage2.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var value = JsonConvert.DeserializeObject<List<ResultWhoWeAreDto>>(jsonData);
+
+                var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
+                var value2 = JsonConvert.DeserializeObject<List<ResultServiceDto>>(jsonData2);
+
                 ViewBag.title = value.Select(x => x.Title).FirstOrDefault();
                 ViewBag.subTitle = value.Select(x => x.SubTitle).FirstOrDefault();
                 ViewBag.description1 = value.Select(x => x.Description1).FirstOrDefault();
                 ViewBag.description2 = value.Select(x => x.Description2).FirstOrDefault();
+
+                return View(value2);
             }
 
             return View();
