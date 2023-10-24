@@ -80,3 +80,10 @@ Icon nvarchar(100),
 Title nvarchar(100),
 Description nvarchar(250),
 )
+
+create table PopularLocations
+(
+LocationID int primary key identity(1,1),
+CityName nvarchar(50),
+ImageUrl nvarchar(500)
+)
