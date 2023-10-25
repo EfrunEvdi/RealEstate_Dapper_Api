@@ -87,3 +87,58 @@ LocationID int primary key identity(1,1),
 CityName nvarchar(50),
 ImageUrl nvarchar(500)
 )
+
+create table Testimonials
+(
+TestimonialID int primary key identity(1,1),
+NameSurname nvarchar(50),
+Title nvarchar(50),
+Comment nvarchar(500),
+Status bit,
+)
+
+create table SubFeatures
+(
+SubFeatureID int primary key identity(1,1),
+Icon nvarchar(100),
+TabTitle nvarchar(100),
+MainTitle nvarchar(100),
+Description nvarchar(100),
+SubTitle nvarchar(100),
+)
+
+create table MailSubscribes
+(
+MailID int primary key identity(1,1),
+Email nvarchar(100),
+)
+
+create table SocialMedias
+(
+SocialMediaID int primary key identity(1,1),
+Name nvarchar(100),
+Icon nvarchar(100),
+Url nvarchar(200),
+)
+
+create table Contacts
+(
+ContactID int primary key identity(1,1),
+Name nvarchar(100),
+Subject nvarchar(100),
+Email nvarchar(100),
+Message nvarchar(max),
+Date date,
+)
+
+create table Addresses
+(
+AddressID int primary key identity(1,1),
+Title1 nvarchar(100),
+Description nvarchar(200),
+Title2 nvarchar(100),
+Phone1 nvarchar(50),
+Phone2 nvarchar(50),
+Email nvarchar(50),
+Location nvarchar(500),
+)
