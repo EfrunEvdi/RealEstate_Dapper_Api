@@ -1,0 +1,56 @@
+﻿@model List<ResultCategoryDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div class="col-12">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Responsive Table</h6>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Kategori Adı</th>
+                        <th scope="col">Durum</th>
+                        <th scope="col">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">@item.CategoryID</th>
+                            <td>@item.Name</td>
+
+                            @if (item.Status == true)
+                            {
+                                <td>Aktif</td>
+                            }
+                            else
+                            {
+                                <td>Pasif</td>
+                            }
+
+                            <td class="text-right">
+                                <div class="dropdown">
+                                    <a class="btn btn-sm btn-icon-only text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-ellipsis-v"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                        <a class="dropdown-item" href="/Category/UpdateCategory/@item.CategoryID"><i class="fa fa-pencil mx-0"></i> Güncelle</a>
+                                        <a class="dropdown-item" href="/Category/DeleteCategory/@item.CategoryID"><i class="fa fa-trash mx-0"></i> Sil</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <a class="btn btn-outline-primary" href="#"><i class="fa fa-plus mx-0"></i> Yeni Kategori Ekle!</a>
+            </table>
+        </div>
+    </div>
+</div>
+
+
