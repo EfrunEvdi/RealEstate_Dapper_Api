@@ -1,0 +1,66 @@
+﻿@model List<ResultProductDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div class="col-12">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Responsive Table</h6>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">İlan Başlığı</th>
+                        <th scope="col">Şehir</th>
+                        <th scope="col">İlçe</th>
+                        <th scope="col">Kategori</th>
+                        <th scope="col">Fiyat</th>
+                        <th scope="col">Tür</th>
+                        <th scope="col" class="text-end"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">@item.productID</th>
+                            <td>@item.title</td>
+                            <td>@item.city</td>
+                            <td>@item.district</td>
+                            <td>@item.name</td>
+                            <td>@item.price</td>
+                            <td>@item.type</td>
+
+                            <td class="text-end">
+                                <div class="dropdown">
+                                    <a class="btn btn-sm btn-icon-only text-dark" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-ellipsis-v"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                        <a class="dropdown-item" href="/Product/ProductDetail/@item.productID"><i class="fa fa-eye mx-0"></i> Sitede Gör</a>
+                                        <a class="dropdown-item" href="/Product/UpdateProduct/@item.productID"><i class="fa fa-pencil mx-0"></i> Güncelle</a>
+                                        <a class="dropdown-item" href="/Product/DeleteProduct/@item.productID"><i class="fa fa-trash mx-0"></i> Sil</a>
+
+                                        @* @if (item.dealOfTheDay == true)
+                                        {
+                                            <a class="dropdown-item" href="/Product/ProductDealOfTheDayStatusChangeToFalse/@item.productID"><i class="fa fa-trash mx-0"></i> Pasif Yap</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="dropdown-item" href="/Product/ProductDealOfTheDayStatusChangeToTrue/@item.productID"><i class="fa fa-trash mx-0"></i> Aktif Yap</a>
+                                        } *@
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <a class="btn btn-primary col-12" href="/Product/CreateProduct"><i class="fa fa-plus mx-0"></i> Yeni İlan Ekle!</a>
+        </div>
+    </div>
+</div>
+
