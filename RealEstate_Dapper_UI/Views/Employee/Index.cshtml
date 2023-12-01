@@ -1,4 +1,4 @@
-﻿@model List<ResultCategoryDto>
+﻿@model List<ResultEmployeeDto>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,13 +7,14 @@
 
 <div class="col-12">
     <div class="bg-light rounded h-100 p-4">
-        <h6 class="mb-4">Kategori Listesi</h6>
+        <h6 class="mb-4">Personel Listesi</h6>
         <div class="table-responsive">
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Kategori Adı</th>
+                        <th scope="col">Personel Adı Soyadı</th>
+                        <th scope="col">Ünvan</th>
                         <th scope="col">Durum</th>
                         <th scope="col" class="text-end"></th>
                     </tr>
@@ -22,8 +23,9 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <th scope="row">@item.CategoryID</th>
+                            <th scope="row">@item.EmployeeID</th>
                             <td>@item.Name</td>
+                            <td>@item.Title</td>
 
                             @if (item.Status == true)
                             {
@@ -40,8 +42,8 @@
                                         <i class="fa fa-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <a class="dropdown-item" href="/Category/UpdateCategory/@item.CategoryID"><i class="fa fa-pencil mx-0"></i> Güncelle</a>
-                                        <a class="dropdown-item" href="/Category/DeleteCategory/@item.CategoryID"><i class="fa fa-trash mx-0"></i> Sil</a>
+                                        <a class="dropdown-item" href="/Employee/UpdateEmployee/@item.EmployeeID"><i class="fa fa-pencil mx-0"></i> Güncelle</a>
+                                        <a class="dropdown-item" href="/Employee/DeleteEmployee/@item.EmployeeID"><i class="fa fa-trash mx-0"></i> Sil</a>
                                     </div>
                                 </div>
                             </td>
@@ -49,7 +51,7 @@
                     }
                 </tbody>
             </table>
-            <a class="btn btn-primary col-12" href="/Category/CreateCategory"><i class="fa fa-plus mx-0"></i> Yeni Kategori Ekle!</a>
+            <a class="btn btn-primary col-12" href="/Employee/CreateEmployee"><i class="fa fa-plus mx-0"></i> Yeni Personel Ekle!</a>
         </div>
     </div>
 </div>
