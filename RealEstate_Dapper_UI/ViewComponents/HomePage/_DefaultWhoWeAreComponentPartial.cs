@@ -25,7 +25,7 @@ namespace RealEstate_Dapper_UI.ViewComponents.HomePage
             if (responseMessage.IsSuccessStatusCode && responseMessage2.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var value = JsonConvert.DeserializeObject<List<ResultWhoWeAreDto>>(jsonData);
+                var value = JsonConvert.DeserializeObject<List<ResultWhoWeAreDetailDto>>(jsonData);
 
                 var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
                 var value2 = JsonConvert.DeserializeObject<List<ResultServiceDto>>(jsonData2);

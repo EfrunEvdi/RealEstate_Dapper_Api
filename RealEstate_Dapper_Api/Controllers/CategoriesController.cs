@@ -40,7 +40,7 @@ namespace RealEstate_Dapper_Api.Controllers
         public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
         {
             _categoryRepository.UpdateCategory(updateCategoryDto);
-            return Ok("Kategori başarıyla güncellendi.");
+            return Ok("Kategori başarılı bir şekilde güncellendi.");
         }
 
         [HttpGet("{id}")]
