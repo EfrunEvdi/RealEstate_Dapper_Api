@@ -1,8 +1,21 @@
-﻿
+﻿@model CreateServiceDto
+
 @{
     ViewData["Title"] = "CreateService";
     Layout = "~/Views/Admin/Index.cshtml";
 }
 
-<h1>CreateService</h1>
-
+<div class="col-12">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Servis Ekleme Formu</h6>
+        <form method="post">
+            <div class="row mb-3">
+                <label class="col-2 col-form-label">Servis Adı</label>
+                <div class="col-10">
+                    <input type="text" class="form-control" asp-for="Name">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary col-12">Yeni Servis Ekle!</button>
+        </form>
+    </div>
+</div>
