@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RealEstate_Dapper_Api.Dtos.PopularLocationDtos;
 using RealEstate_Dapper_Api.Repositories.PopularLocationRepositories;
 
 namespace RealEstate_Dapper_Api.Controllers
@@ -8,18 +9,46 @@ namespace RealEstate_Dapper_Api.Controllers
     [ApiController]
     public class PopularLocationsController : ControllerBase
     {
-        private readonly IPopularLocationRepository _bottomGridRepository;
+        private readonly IPopularLocationRepository _locationRepository;
 
-        public PopularLocationsController(IPopularLocationRepository bottomGridRepository)
+        public PopularLocationsController(IPopularLocationRepository locationRepository)
         {
-            _bottomGridRepository = bottomGridRepository;
+            _locationRepository = locationRepository;
         }
 
         [HttpGet]
         public async Task<IActionResult> PopularLocationList()
         {
-            var values = await _bottomGridRepository.GetAllPopularLocationAsync();
-            return Ok(values);
+            var value = await _locationRepository.GetAllPopularLocationAsync();
+            return Ok(value);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreatePopularLocation(CreatePopularLocationDto createPopularLocationDto)
+        {
+            _locationRepository.CreatePopularLocation(createPopularLocationDto);
+            return Ok("Lokasyon başarılı bir şekilde eklendi.");
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePopularLocation(int id)
+        {
+            _locationRepository.DeletePopularLocation(id);
+            return Ok("Lokasyon başarılı bir şekilde silindi.");
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdatePopularLocation(UpdatePopularLocationDto updatePopularLocationDto)
+        {
+            _locationRepository.UpdatePopularLocation(updatePopularLocationDto);
+            return Ok("Lokasyon bilgisi başarılı bir şekilde güncellendi.");
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPopularLocation(int id)
+        {
+            var value = await _locationRepository.GetPopularLocation(id);
+            return Ok(value);
         }
     }
 }

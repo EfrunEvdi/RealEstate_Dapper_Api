@@ -1,0 +1,47 @@
+﻿@model List<ResultPopularLocationDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div class="col-12">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Popüler Lokasyon Listesi</h6>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Görsel</th>
+                        <th scope="col">Şehir Adı</th>
+                        <th scope="col" class="text-end"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">@item.LocationID</th>
+                            <td><img class="img-fluid rounded-circle mx-auto mb-4" src="@item.ImageUrl" style="width: 75px; height: 75px;"></td>
+                            <td>@item.CityName</td>
+
+                            <td class="text-end">
+                                <div class="dropdown">
+                                    <a class="btn btn-sm btn-icon-only text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-ellipsis-v"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                        <a class="dropdown-item" href="/PopularLocation/UpdatePopularLocation/@item.LocationID"><i class="fa fa-pen mx-0"></i> Güncelle</a>
+                                        <a class="dropdown-item" href="/PopularLocation/DeletePopularLocation/@item.LocationID"><i class="fa fa-trash mx-0"></i> Sil</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <a class="btn btn-primary col-12" href="/PopularLocation/CreatePopularLocation"><i class="fa fa-plus mx-0"></i> Yeni Popüler Lokasyon Ekle!</a>
+        </div>
+    </div>
+</div>

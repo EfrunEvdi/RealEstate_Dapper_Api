@@ -1,0 +1,28 @@
+﻿@model CreatePopularLocationDto
+
+@{
+    ViewData["Title"] = "CreatePopularLocation";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div class="col-12">
+    <div class="bg-light rounded h-100 p-4">
+        <h6 class="mb-4">Popüler Lokasyon Ekleme Formu</h6>
+        <form method="post">
+            <div class="row mb-3">
+                <label class="col-2 col-form-label">Görsel Url</label>
+                <div class="col-10">
+                    <input type="text" class="form-control" asp-for="ImageUrl">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-2 col-form-label">Şehir Adı</label>
+                <div class="col-10">
+                    <input type="text" class="form-control" asp-for="CityName">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary col-12">Yeni Popüler Lokasyon Ekle!</button>
+        </form>
+    </div>
+</div>
+
