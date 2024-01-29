@@ -12,49 +12,49 @@
             <div class="row mb-3">
                 <label class="col-2 col-form-label">İlan Başlığı</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" asp-for="title">
+                    <input type="text" class="form-control" asp-for="Title">
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-2 col-form-label">Şehir</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" asp-for="city">
+                    <input type="text" class="form-control" asp-for="City">
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-2 col-form-label">İlçe</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" asp-for="district">
+                    <input type="text" class="form-control" asp-for="District">
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-2 col-form-label">Kategori</label>
                 <div class="col-10">
-                    @Html.DropDownListFor(x => x.categoryId, (IEnumerable<SelectListItem>)ViewBag.v, "Kategori seçiniz", new { @class = "form-control" })
+                    @Html.DropDownListFor(x => x.CategoryId, (IEnumerable<SelectListItem>)ViewBag.v, "Kategori seçiniz", new { @class = "form-control" })
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-2 col-form-label">Fiyat</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" asp-for="price">
+                    <input type="text" class="form-control" asp-for="Price">
                 </div>
             </div>
             <div class="row mb-3">
                 <label class="col-2 col-form-label">Tür</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" asp-for="type">
+                    <input type="text" class="form-control" asp-for="Type">
                 </div>
-            </div> 
+            </div>
             <div class="row mb-3">
                 <label class="col-2 col-form-label">Kapak Fotoğrafı</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" asp-for="coverimage">
+                    <input type="text" class="form-control" asp-for="Coverimage">
                 </div>
-            </div> 
+            </div>
             <div class="row mb-3">
                 <label class="col-2 col-form-label">İlan Açık Adres</label>
                 <div class="col-10">
-                    <input type="text" class="form-control" asp-for="address">
+                    <input type="text" class="form-control" asp-for="Address">
                 </div>
             </div>
             <button type="submit" class="btn btn-primary col-12">Yeni İlan Ekle!</button>

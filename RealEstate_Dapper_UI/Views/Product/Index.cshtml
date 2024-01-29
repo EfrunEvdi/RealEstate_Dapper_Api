@@ -26,13 +26,13 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <th scope="row">@item.productID</th>
-                            <td>@item.title</td>
-                            <td>@item.city</td>
-                            <td>@item.district</td>
-                            <td>@item.name</td>
-                            <td>@item.price</td>
-                            <td>@item.type</td>
+                            <th scope="row">@item.ProductID</th>
+                            <td>@item.Title</td>
+                            <td>@item.City</td>
+                            <td>@item.District</td>
+                            <td>@item.Name</td>
+                            <td>@item.Price</td>
+                            <td>@item.Type</td>
 
                             <td class="text-end">
                                 <div class="dropdown">
@@ -40,18 +40,18 @@
                                         <i class="fa fa-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                        <a class="dropdown-item" href="/Product/ProductDetail/@item.productID"><i class="fa fa-eye mx-0"></i> Sitede Gör</a>
-                                        <a class="dropdown-item" href="/Product/UpdateProduct/@item.productID"><i class="fa fa-pen mx-0"></i> Güncelle</a>
-                                        <a class="dropdown-item" href="/Product/DeleteProduct/@item.productID"><i class="fa fa-trash mx-0"></i> Sil</a>
-
-                                        @* @if (item.dealOfTheDay == true)
+                                        @if (item.DealOfTheDay)
                                         {
-                                            <a class="dropdown-item" href="/Product/ProductDealOfTheDayStatusChangeToFalse/@item.productID"><i class="fa fa-trash mx-0"></i> Pasif Yap</a>
+                                            <a class="dropdown-item" href="/Product/ProductDealOfTheDayStatusChangeToFalse/@item.ProductID"><i class="fa fa-toggle-off mx-0"></i> Günün Fırsatlarına Ekle!</a>
                                         }
                                         else
                                         {
-                                            <a class="dropdown-item" href="/Product/ProductDealOfTheDayStatusChangeToTrue/@item.productID"><i class="fa fa-trash mx-0"></i> Aktif Yap</a>
-                                        } *@
+                                            <a class="dropdown-item" href="/Product/ProductDealOfTheDayStatusChangeToTrue/@item.ProductID"><i class="fa fa-toggle-on mx-0"></i> Günün Fırsatlarından Çıkar!</a>
+                                        }
+
+                                        <a class="dropdown-item" href="/Product/ProductDetail/@item.ProductID"><i class="fa fa-eye mx-0"></i> Sitede Gör</a>
+                                        <a class="dropdown-item" href="/Product/UpdateProduct/@item.ProductID"><i class="fa fa-pen mx-0"></i> Güncelle</a>
+                                        <a class="dropdown-item" href="/Product/DeleteProduct/@item.ProductID"><i class="fa fa-trash mx-0"></i> Sil</a>
                                     </div>
                                 </div>
                             </td>
